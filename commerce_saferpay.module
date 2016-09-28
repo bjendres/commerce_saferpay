@@ -108,7 +108,7 @@ function commerce_saferpay_initpay($order, $settings, array $data = array()) {
   // en.
   $data['LANGID'] = in_array($language->language, array('en', 'de', 'fr', 'it')) ? $language->language : 'EN';
 
-  $url = url('https://www.saferpay.com/hosting/CreatePayInit.asp', array('external' => TRUE, 'query' => $data));
+  $url = url('https://test.saferpay.com/hosting/CreatePayInit.asp', array('external' => TRUE, 'query' => $data));
   $return = commerce_saferpay_process_url($url);
   if (strpos($return, 'ERROR') !== FALSE) {
     drupal_set_message(t('An error occurred during payment: @error.', array('@error' => $return)), 'error');
@@ -155,7 +155,7 @@ function commerce_saferpay_confirm_validate($data, $signature) {
     'DATA' => $data,
     'SIGNATURE' => $signature,
   );
-  $url = url('https://www.saferpay.com/hosting/VerifyPayConfirm.asp', array('external' => TRUE, 'query' => $verify));
+  $url = url('https://test.saferpay.com/hosting/VerifyPayConfirm.asp', array('external' => TRUE, 'query' => $verify));
   $result = commerce_saferpay_process_url($url);
 
   if (drupal_substr($result, 0, 3) != 'OK:') {

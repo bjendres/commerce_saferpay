@@ -171,7 +171,7 @@ function commerce_saferpay_pp_process_data($order, $payment_method, $data) {
     if (!empty($settings['password'])) {
       $finalize['spPassword'] = $settings['password'];
     }
-    $url = url('https://www.saferpay.com/hosting/PayComplete.asp', array('external' => TRUE, 'query' => $finalize));
+    $url = url('https://test.saferpay.com/hosting/PayComplete.asp', array('external' => TRUE, 'query' => $finalize));
     $result = commerce_saferpay_process_url($url);
     if (drupal_substr($result, 0, 2) == 'OK') {
       $transaction->status = COMMERCE_PAYMENT_STATUS_SUCCESS;

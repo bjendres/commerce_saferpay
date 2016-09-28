@@ -380,7 +380,7 @@ function commerce_saferpay_business_verify_enrollment($order, $scd_response, $se
   $data['AMOUNT'] = $total[0]['amount'];
   $data['CURRENCY'] = $total[0]['currency_code'];
 
-  $url = url('https://www.saferpay.com/hosting/VerifyEnrollment.asp', array('external' => TRUE, 'query' => $data));
+  $url = url('https://test.saferpay.com/hosting/VerifyEnrollment.asp', array('external' => TRUE, 'query' => $data));
 
   $return = commerce_saferpay_process_url($url);
   list($code, $response) = explode(':', $return, 2);
@@ -442,7 +442,7 @@ function commerce_saferpay_business_authorize_payment($order, $settings, $method
   $order_identifier = token_replace($settings['order_identifier'], array('commerce-order' => $order));
   $data['ORDERID'] = htmlentities($order_identifier);
 
-  $url = url('https://www.saferpay.com/hosting/execute.asp', array('external' => TRUE, 'query' => $data));
+  $url = url('https://test.saferpay.com/hosting/execute.asp', array('external' => TRUE, 'query' => $data));
 
   $return = commerce_saferpay_process_url($url);
   list($code, $idp_string) = explode(':', $return, 2);
@@ -506,7 +506,7 @@ function commerce_saferpay_business_settle_payment($transaction, $settings) {
 
   $data['ID'] = $transaction->remote_id;
 
-  $url = url('https://www.saferpay.com/hosting/paycompletev2.asp', array('external' => TRUE, 'query' => $data));
+  $url = url('https://test.saferpay.com/hosting/paycompletev2.asp', array('external' => TRUE, 'query' => $data));
 
   $return = commerce_saferpay_process_url($url);
   list($code, $response_string) = explode(':', $return, 2);
